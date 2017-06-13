@@ -1,6 +1,6 @@
 {
   "name": "mean-contactlist-angular2-a",
-   "version": "1.0.0",
+  "version": "1.0.0",
   "engines": {
     "node": "6.11"
   },
@@ -16,19 +16,20 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.1.1",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/language-service": "^4.0.0",
     "@angular/animations": "^4.0.0",
+    "@angular/cli": "1.1.1",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
+    "@angular/language-service": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "body-parser": "^1.17.2",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "express": "^4.15.3",
     "mongodb": "^2.2.28",
