@@ -42,7 +42,7 @@ function handleError(res, reason, message, code) {
 //   GET: finds all contacts
 //   POST: create a new contacts
 
-app.get('/api/postblogs', function(req, res){
+app.get('/api/blogs', function(req, res){
   db.collection(COLLECTION_NAME).find({}).toArray(function(err, docs){
     if (err) {
       handleError(res, err.message, "Failed to get contacts.");
