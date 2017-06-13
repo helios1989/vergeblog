@@ -1,0 +1,17 @@
+.blog span {
+ display: inline-block;
+ width: 100%;
+ margin-bottom: 20px;
+}
+.blog .author {
+  font-weight: 700;
+  font-size: 21px;
+}
+.blog .description {
+  font-weight: 400;
+  font-size: 14px;
+}
+.blog .blog-posted {
+  font-weight: 700;
+  font-size: 12px
+}
