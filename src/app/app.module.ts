@@ -6,13 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BlogDetailsComponent } from './blogs/blog-details/blog-details.component';
 import { BlogListComponent } from './blogs/blog-list/blog-list.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BlogDetailsComponent,
-    BlogListComponent
+    BlogListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
