@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
 var objectID = mongodb.ObjectID;
 
-var COLLECTION_NAME = '';
+var COLLECTION_NAME = 'vergeblog';
 var port = process.env.PORT || 8080;
 var app = express();
 
