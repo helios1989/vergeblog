@@ -13,7 +13,7 @@ var distDir = __dirname + "/dist";
 app.use(express.static(distDir));
 
 var db;
-
+process.env.MONGODB_URI = 'mongodb://test:test@ds127132.mlab.com:27132/vergeblog';
 //Connect to the database before starting the application server.
 mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database){
   if (err) {
