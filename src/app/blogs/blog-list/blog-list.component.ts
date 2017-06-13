@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from '../blog';
 import { BlogService } from '../blog.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
@@ -11,7 +12,10 @@ import * as moment from 'moment';
 })
 export class BlogListComponent implements OnInit {
   blogs: Blog[]
-  constructor(private blogService: BlogService) { }
+  constructor(
+    private blogService: BlogService,
+    private router: Router,
+    ) { }
   // testDate: string
   ngOnInit() {
     // const raw = '2017-06-13T05:36:22.474Z';
@@ -30,4 +34,9 @@ export class BlogListComponent implements OnInit {
       });
   }
 
+  newBlog() {
+    //add new blog
+    alert('hello world');
+    this.router.navigate(['/blog', { id: '2'}]);
+  }
 }
