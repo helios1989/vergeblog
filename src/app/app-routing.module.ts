@@ -11,9 +11,9 @@ const routes: Routes = [
   { path: 'home', component: BlogListComponent },
   { path: 'about', component:  AboutComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'blog/:id', component: BlogDetailsComponent },
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '/404' }
+  { path: 'blog/:id', component: BlogDetailsComponent }
+  // { path: '404', component: NotFoundComponent },
+  // { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({

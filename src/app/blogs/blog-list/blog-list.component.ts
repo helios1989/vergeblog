@@ -3,6 +3,7 @@ import { Blog } from '../blog';
 import { BlogService } from '../blog.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as moment from 'moment';
+// import { BlogDetailsComponent } from '../blogs/blog-details/blog-details.component';
 
 @Component({
   selector: 'app-blog-list',
@@ -36,7 +37,7 @@ export class BlogListComponent implements OnInit {
 
   newBlog() {
     //add new blog
-    alert('hello world');
-    this.router.navigate(['/blog', { id: '2'}]);
+    this.router.navigate(['blog', 0]);
+    return false;
   }
 }
