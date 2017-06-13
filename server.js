@@ -51,3 +51,20 @@ app.get('/api/blogs', function(req, res){
     }
   })
 })
+
+app.post("/api/blogs", function(req, res) {
+  var newblog = req.body;
+  newblog.createDate = new Date();
+
+  if (!req.body.name) {
+    handleError(res, "Invalid user input", "Must provide a name.", 400);
+  }
+
+  db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to create new contact.");
+    } else {
+      res.status(201).json(doc.ops[0]);
+    }
+  });
+});
