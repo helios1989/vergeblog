@@ -52,7 +52,7 @@ app.get('/api/blogs', function(req, res){
   })
 })
 
-app.post("/api/blogs", function(req, res) {
+app.post("/api/blogaddnew", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
 
