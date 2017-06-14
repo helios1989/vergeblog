@@ -25,7 +25,7 @@ export class BlogListComponent implements OnInit {
       .then((blogs: Blog[]) => {
         if (blogs) {
         this.blogs = blogs.map((blogs) => {
-          if(!blogs.name) {
+          if(!blogs.title) {
             console.log('no contact')
           }
             console.log(blogs);

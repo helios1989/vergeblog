@@ -12,6 +12,7 @@ import { Blog } from '../blog';
 })
 export class BlogDetailsComponent implements OnInit {
   //using reactiveform template
+  //Form Group Array
   blogForm: FormGroup;
   constructor(
     private router: Router,
