@@ -56,9 +56,9 @@ app.post("/api/blogaddnew", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
   console.log(newblog);
-  if (!req.body.name) {
-    handleError(res, "Invalid user input", "Must provide a name.", 400);
-  }
+  // if (!req.body.name) {
+  //   handleError(res, "Invalid user input", "Must provide a name.", 400);
+  // }
 
   db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
     console.log(doc);
