@@ -14,10 +14,13 @@ export class BlogDetailsComponent implements OnInit {
   //using reactiveform template
   //Form Group Array
   blogForm: FormGroup;
+  private sub: any;
+  id: number;
   constructor(
     private router: Router,
     private blogService: BlogService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -32,6 +35,13 @@ export class BlogDetailsComponent implements OnInit {
         'telephone': new FormControl(null, Validators.required)
       })
     });
+    //automatically pull the params in ActivatedRoute
+     this.sub = this.route.params.subscribe(params => {
+       this.id = +params['id']; // (+) converts string 'id' to a number
+       console.log(this.id);
+       // In a real app: dispatch action to load the details here.
+    });
+
   }
   save() {
     console.log(this.blogForm.value);
