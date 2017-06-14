@@ -7,7 +7,8 @@ import { Blog } from '../blog';
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.component.html',
-  styleUrls: ['./blog-details.component.css']
+  styleUrls: ['./blog-details.component.css'],
+  providers: [BlogService]
 })
 export class BlogDetailsComponent implements OnInit {
   //using reactiveform template
@@ -35,7 +36,7 @@ export class BlogDetailsComponent implements OnInit {
     this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
       console.log('successfully addded ' + newBlog);
     });
-    
+
   }
 
 }
