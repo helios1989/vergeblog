@@ -19,7 +19,7 @@ export class BlogDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.router.params
+    // this.router.paramss 
     this.blogForm = new FormGroup({
       //first argument is the initial value and second the valdiation
       'title': new FormControl(null, Validators.required),
