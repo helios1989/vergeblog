@@ -3,6 +3,7 @@ import { Blog } from './blog';
 import { Http, Response } from '@angular/http';
 import 'rxjs';
 import 'rxjs/add/operator/toPromise';
+
 @Injectable()
 export class BlogService {
   private blogsURI = '/api/blogs';
@@ -16,7 +17,7 @@ export class BlogService {
                   .catch(this.handleError);
   }
 
-  // post api/blogs
+  // post api/blogss
   createBlog(newBlog: Blog): Promise<Blog> {
     return this.http.post(this.blogAddnew, newBlog)
                 .toPromise()
