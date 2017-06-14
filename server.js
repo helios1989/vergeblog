@@ -61,6 +61,7 @@ app.post("/api/blogaddnew", function(req, res) {
   }
 
   db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
+    console.log(doc);
     if (err) {
       handleError(res, err.message, "Failed to create new contact.");
     } else {
