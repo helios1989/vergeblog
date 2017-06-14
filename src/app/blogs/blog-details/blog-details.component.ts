@@ -16,12 +16,13 @@ export class BlogDetailsComponent implements OnInit {
   blogForm: FormGroup;
   constructor(
     private router: Router,
-    private blogService: BlogService
+    private blogService: BlogService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    // this.router.paramss 
-    this.blogForm = new FormGroup({
+    // this.router.paramss
+    this.blogForm = this.fb.group({
       //first argument is the initial value and second the valdiation
       'title': new FormControl(null, Validators.required),
       'description': new FormControl(null, Validators.required), // multiple validator
@@ -33,7 +34,7 @@ export class BlogDetailsComponent implements OnInit {
     });
   }
   save() {
-    
+    console.log(this.blogForm.value);
     this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
       console.log('successfully addded ' + newBlog);
     });
