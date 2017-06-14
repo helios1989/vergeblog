@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class BlogService {
   private blogsURI = '/api/blogs';
-
+  
   constructor(private http: Http) { }
 
   getBlogs(): Promise<Blog[]> {
@@ -14,6 +14,14 @@ export class BlogService {
                   .toPromise()
                   .then(response => response.json() as Blog[])
                   .catch(this.handleError);
+  }
+
+  // post api/blogs
+  createBlog(newBlog: Blog): Promise<Blog> {
+    return this.http.post(this.blogsURI, newBlog)
+                .toPromise()
+                .then(response => response.json() as Blog)
+                .catch(this.handleError);
   }
   private handleError (error: any) {
     let errMsg = (error.message) ? error.message :

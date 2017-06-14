@@ -1,19 +1,50 @@
 <div class="container">
-  <form action="" class="form-group">
+  <form action="" class="form-group" [formGroup]="blogForm" (ngSubmit)="save()">
      <div>
       <label for="title">Title:
-        <input type="text"  class="form-control title" name="title"/>
+        <input type="text" formControlName="title" class="form-control title" name="title"/>
+        <span
+          *ngIf="!blogForm.get('title').valid && blogForm.get('title').touched" 
+          class="help-block">Please enter the title</span>
       </label>
     </div>
+     <div>
+        <label for="email">Email:
+          <input formControlName="email" type="text" cols="555" rows="10" class="form-control email" name="email"/>
+            <span
+            *ngIf="!blogForm.get('email').valid && blogForm.get('email').touched" 
+            class="help-block">Please enter valid email</span>
+        </label>
+      </div>
+      <div formGroupName="contact">
+          <label for="mobile">Mobile:
+            <input formControlName="mobile" type="text" cols="555" rows="10" class="form-control mobile" name="mobile"/>
+              <span
+              *ngIf="!blogForm.get('contact.mobile').valid && blogForm.get('contact.mobile').touched" 
+              class="help-block">Please enter valid mobile</span>
+          </label>
+
+          <label for="telephone">telephone:
+          <input formControlName="telephone" type="text" cols="555" rows="10" class="form-control telephone" name="telephone"/>
+            <span
+            *ngIf="!blogForm.get('contact.telephone').valid && blogForm.get('contact.telephone').touched" 
+            class="help-block">Please enter valid telephone</span>
+          </label>
+        </div>
+   
     <div>
       <label for="description">Description:
-        <textarea type="text" cols="555" rows="10" class="form-control description" name="description"></textarea>
+        <textarea formControlName="description" type="text" cols="555" rows="10" class="form-control description" name="description"></textarea>
+          <span
+          *ngIf="!blogForm.get('description').valid && blogForm.get('description').touched" 
+          class="help-block">Please enter the description</span>
       </label>
     </div>
         <!--<label for="title">Title:
       <textarea type="text"  class="form-control" [formControl]="blog-description"/>
     </label>-->
+    <button type="submit"  class="btn btn-success btn-save">Save1</button>
+    <button class="btn btn-warning">Cancel</button>
   </form>
-  <button class="btn btn-success btn-save">Save</button>
-  <button class="btn btn-warning">Cancel</button>
+
 </div>
