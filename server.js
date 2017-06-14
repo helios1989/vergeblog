@@ -55,7 +55,7 @@ app.get('/api/blogs', function(req, res){
 app.post("/api/blogaddnew", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
-  console.log(createdDate);
+  console.log(newblog);
   if (!req.body.name) {
     handleError(res, "Invalid user input", "Must provide a name.", 400);
   }
