@@ -6,16 +6,10 @@
   <li><span>list of posted articles </span>
       <button class="btn btn-success" (click)="newBlog()">new Blog</button>
   </li>
-  <!--test date {{testDate}}-->
+  <!--test date {{testDate}} -->
   <li class="list-group-item blog"
     *ngFor="let blog of blogs">
     <span class="author">Posted title: {{blog.title}}</span>
     <span class="description">{{blog.description}}</span>
     <span class="blog-posted">{{blog.createDate | date}}</span>
-  <!--</li>
-    <li class="list-group-item blog">
-    <span class="author">Posted By:  A</span>
-    <span class="description"> B</span>
-    <span class="blog-posted"> C</span>
-  </li>-->
 </ul>
