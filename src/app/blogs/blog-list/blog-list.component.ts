@@ -53,17 +53,16 @@ export class BlogListComponent implements OnInit {
   }
 
   deleteBlog(id: string) {
-    var idx = this.getIndexOfContact(id);
-    if (idx !== -1) {
-      this.blogs.splice(idx, 1);
-      this.selectContact(null);
-      alert('testing');
-    }
+
     // this.blogs;
     this.blogService.deleteBlog(id).then((deletedContactId: String) => {
-      // this.deleteHandler(deletedContactId);
-
-      // console.log(deletedContactId);
+      var idx = this.getIndexOfContact(deletedContactId);
+      if (idx !== -1) {
+          this.blogs.splice(idx, 1);
+          this.selectContact(null);
+          // alert('testing');
+      }
+      return this.blogs;
     });
   }
 
