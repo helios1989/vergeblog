@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
-var objectID = mongodb.ObjectID;
+var ObjectID = mongodb.ObjectID;
 
 var COLLECTION_NAME = 'vergeblog';
 var port = process.env.PORT || 8080;
@@ -64,16 +64,13 @@ app.get("/api/blogs/:id", function(req, res) {
 
 
 app.delete("/api/blogs/:id", function(req, res) {
-  // console.log(req.params);
-  res.status(200).json('HORRAY1 ' + req.params.id);
-  // db.collection(COLLECTION_NAME).deleteOne({_id: req.params.id}, function(err, result) {
-
-  //   if (err) {
-  //     handleError(res, err.message, "Failed to delete contact");
-  //   } else {
-  //     res.status(200).json(req.params);
-  //   }
-  // });
+  db.collection(COLLECTION_NAME).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+    if (err) {
+      handleError(res, err.message, "Failed to delete contact");
+    } else {
+      res.status(200).json('HORRAY ' + new ObjectID(req.params.id));
+    }
+  });
 });
 
 app.post("/api/blogs", function(req, res) {
