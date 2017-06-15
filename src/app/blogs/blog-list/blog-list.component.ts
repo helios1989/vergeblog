@@ -59,13 +59,14 @@ export class BlogListComponent implements OnInit {
       this.selectContact(null);
       alert('testing');
     }
-
-    this.blogService.deleteContact(id).then((deletedContactId: String) => {
+    // this.blogs;
+    this.blogService.deleteBlog(id).then((deletedContactId: String) => {
       // this.deleteHandler(deletedContactId);
 
-      console.log(deletedContactId);
+      // console.log(deletedContactId);
     });
   }
+
   selectContact(blog: Blog) {
     this.selectedBlog = blog;
   }

@@ -26,7 +26,7 @@ export class BlogService {
   }
 
   // delete("/api/contacts/:id")
-  deleteContact(blogId: String): Promise<String> {
+  deleteBlog(blogId: String): Promise<String> {
       return this.http.delete(this.blogsURI + '/' + blogId)
                  .toPromise()
                  .then(response => response.json() as String)
