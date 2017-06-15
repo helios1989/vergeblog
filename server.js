@@ -73,7 +73,7 @@ app.delete("/api/blogs/:id", function(req, res) {
   //   } else {
   //     res.status(200).json(req.params);
   //   }
-  });
+  // });
 });
 
 app.post("/api/blogs", function(req, res) {
