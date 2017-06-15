@@ -13,6 +13,7 @@ import * as moment from 'moment';
 })
 export class BlogListComponent implements OnInit {
   blogs: Blog[]
+  selectedBlog: Blog
   constructor(
     private blogService: BlogService,
     private router: Router,
@@ -55,7 +56,8 @@ export class BlogListComponent implements OnInit {
     var idx = this.getIndexOfContact(id);
     if (idx !== -1) {
       this.blogs.splice(idx, 1);
-      // this.selectContact(null);
+      this.selectContact(null);
+      alert('testing');
     }
 
     this.blogService.deleteContact(id).then((deletedContactId: String) => {
@@ -63,5 +65,8 @@ export class BlogListComponent implements OnInit {
 
       console.log(deletedContactId);
     });
+  }
+  selectContact(blog: Blog) {
+    this.selectedBlog = blog;
   }
 }
