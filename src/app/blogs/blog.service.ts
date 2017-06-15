@@ -34,6 +34,15 @@ export class BlogService {
                  .catch(this.handleError);
   }
 
+  // put("/api/contacts/:id")
+  // updateContact(putContact: Contact): Promise<Contact> {
+  //   var putUrl = this.contactsUrl + '/' + putContact._id;
+  //   return this.http.put(putUrl, putContact)
+  //               .toPromise()
+  //               .then(response => response.json() as Contact)
+  //               .catch(this.handleError);
+  // }
+
   private handleError (error: any) {
     let errMsg = (error.message) ? error.message :
     error.status ? `${error.status} - ${error.statusText}` : 'Server error';
