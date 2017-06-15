@@ -7,7 +7,6 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class BlogService {
   private blogsURI = '/api/blogs';
-  private blogAddnew = '/api/blogaddnew';
 
   constructor(private http: Http) { }
 
@@ -20,7 +19,7 @@ export class BlogService {
 
   // post api/blogss
   createBlog(newBlog: Blog): Promise<Blog> {
-    return this.http.post(this.blogAddnew, newBlog)
+    return this.http.post(this.blogsURI, newBlog)
                 .toPromise()
                 .then(response => response.json() as Blog)
                 .catch(this.handleError);

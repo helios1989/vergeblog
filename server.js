@@ -52,6 +52,17 @@ app.get('/api/blogs', function(req, res){
   })
 })
 
+app.get("/api/blogs/:id", function(req, res) {
+  db.collection(COLLECTION_NAME).findOne({ _id: new req.params.id }, function(err, doc) {
+    if (err) {
+      handleError(res, err.message, "Failed to get contact");
+    } else {
+      res.status(200).json(doc);
+    }
+  });
+});
+
+
 app.delete("/api/blogs/:id", function(req, res) {
   db.collection(COLLECTION_NAME).deleteOne({_id: req.params._id}, function(err, result) {
     console.log(res.params);
@@ -63,7 +74,7 @@ app.delete("/api/blogs/:id", function(req, res) {
   });
 });
 
-app.post("/api/blogaddnew", function(req, res) {
+app.post("/api/blogs", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
   console.log(newblog);
