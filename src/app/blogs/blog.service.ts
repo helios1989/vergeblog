@@ -7,7 +7,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class BlogService {
   private blogsURI = '/api/blogs';
-  private blogAddnew = '/api/blogaddnew'
+  private blogAddnew = '/api/blogaddnew';
+
   constructor(private http: Http) { }
 
   getBlogs(): Promise<Blog[]> {
@@ -24,6 +25,15 @@ export class BlogService {
                 .then(response => response.json() as Blog)
                 .catch(this.handleError);
   }
+
+  // delete("/api/contacts/:id")
+  deleteContact(blogId: String): Promise<String> {
+      return this.http.delete(this.blogsURI + '/' + blogId)
+                 .toPromise()
+                 .then(response => response.json() as String)
+                 .catch(this.handleError);
+  }
+
   private handleError (error: any) {
     let errMsg = (error.message) ? error.message :
     error.status ? `${error.status} - ${error.statusText}` : 'Server error';

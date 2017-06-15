@@ -52,6 +52,16 @@ app.get('/api/blogs', function(req, res){
   })
 })
 
+app.delete("/api/blogs/:id", function(req, res) {
+  db.collection(COLLECTION_NAME).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+    if (err) {
+      handleError(res, err.message, "Failed to delete contact");
+    } else {
+      res.status(200).json(req.params.id);
+    }
+  });
+});
+
 app.post("/api/blogaddnew", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();

@@ -47,5 +47,6 @@ export class BlogListComponent implements OnInit {
 
   deleteBlog(id: string) {
     alert(id);
-  }
+    this.blogService.deleteContact(id);
+  } 
 }
