@@ -65,7 +65,7 @@ app.get("/api/blogs/:id", function(req, res) {
 
 app.delete("/api/blogs/:id", function(req, res) {
   // console.log(req.params);
-  res.status(200).json('HORRAY ' + new ObjectID(req.params.id));
+  res.status(200).json('HORRAY1 ' + req.params.id);
   // db.collection(COLLECTION_NAME).deleteOne({_id: req.params.id}, function(err, result) {
 
   //   if (err) {
