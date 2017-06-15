@@ -3,18 +3,21 @@
 </p>
 
 <ul>
-  <li><span>list of posted articles </span>
+  <li>
+    <div class="text-right">
+      <span>list of posted articles </span>
       <button class="btn btn-success" (click)="newBlog()">new Blog</button>
+      </div>
   </li>
   <!--test date {{testDate}} -->
   <li class="list-group-item blog"
-    *ngFor="let blog of blogs">
+    *ngFor="let blog of blogs; let i = index">
     <span class="author">Posted title: {{blog.title}}</span>
     <span class="description">{{blog.description}}</span>
     <span class="blog-posted">{{blog.createDate | date}}</span>
     <div class="text-right">
-      <button class="btn btn-update">Edit</button>
-      <button class="btn btn-warning">Delete</button>
+      <button class="btn btn-update">Edit{{i}}</button>
+      <button class="btn btn-warning">Delete{{i}}</button>
     </div>
   </li>
     <!--<li class="list-group-item blog">
