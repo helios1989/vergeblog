@@ -22,7 +22,7 @@ export class BlogListComponent implements OnInit {
     // const raw = '2017-06-13T05:36:22.474Z';
     // this.testDate = moment(raw).format('MMMM do YYYY h:mm:ss a');
     this.blogService.getBlogs()
-      .then((blogs: Blog[]) => {  
+      .then((blogs: Blog[]) => {
         if (blogs) {
         this.blogs = blogs.map((blogs) => {
           if(!blogs.title) {
@@ -47,6 +47,9 @@ export class BlogListComponent implements OnInit {
 
   deleteBlog(id: string) {
     alert(id);
-    this.blogService.deleteContact(id);
-  } 
+    this.blogService.deleteContact(id).then((deletedContactId: String) => {
+      // this.deleteHandler(deletedContactId);
+      console.log(deletedContactId);
+    });
+  }
 }
