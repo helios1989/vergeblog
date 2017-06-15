@@ -68,7 +68,7 @@ app.delete("/api/blogs/:id", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to delete contact");
     } else {
-      res.status(200).json('HORRAY ' + new ObjectID(req.params.id));
+      res.status(200).json(req.params.id);
     }
   });
 });
