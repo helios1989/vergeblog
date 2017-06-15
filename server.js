@@ -71,7 +71,7 @@ app.delete("/api/blogs/:id", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to delete contact");
     } else {
-      res.status(200).json(req.params.id);
+      res.status(200).json('deleted');
     }
   });
 });
@@ -82,7 +82,6 @@ app.post("/api/blogs", function(req, res) {
   // if (!req.body.name) {
   //   handleError(res, "Invalid user input", "Must provide a name.", 400);
   // }
-
   db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to create new contact.");
