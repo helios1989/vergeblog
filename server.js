@@ -66,12 +66,12 @@ app.get("/api/blogs/:id", function(req, res) {
 app.delete("/api/blogs/:id", function(req, res) {
   // console.log(req.params);
 
-  db.collection(COLLECTION_NAME).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+  db.collection(COLLECTION_NAME).deleteOne({_id: req.params.id}, function(err, result) {
 
     if (err) {
       handleError(res, err.message, "Failed to delete contact");
     } else {
-      res.status(200).json('deleted');
+      res.status(200).json(req.params);
     }
   });
 });
@@ -86,7 +86,7 @@ app.post("/api/blogs", function(req, res) {
     if (err) {
       handleError(res, err.message, "Failed to create new contact.");
     } else {
-      res.status(201).json(req.params);
+      res.status(201).json(doc.ops[0]);
     }
   });
 });
