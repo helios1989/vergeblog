@@ -16,8 +16,8 @@
     <span class="description">{{blog.description}}</span>
     <span class="blog-posted">{{blog.createDate | date}}</span>
     <div class="text-right">
-      <button class="btn btn-update">Edit{{i}}</button>
-      <button class="btn btn-warning">Delete{{i}}</button>
+      <button class="btn btn-update" (click)="updateBlog(i)">Edit</button>
+      <button class="btn btn-warning" (click)="deleteBlog(i)">Delete</button>
     </div>
   </li>
     <!--<li class="list-group-item blog">
