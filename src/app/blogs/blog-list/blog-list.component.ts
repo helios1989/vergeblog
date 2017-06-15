@@ -62,7 +62,7 @@ export class BlogListComponent implements OnInit {
           this.selectContact(null);
           // alert('testing');
       }
-      return this.blogs;
+      // return this.blogs;
     });
   }
 
