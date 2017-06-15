@@ -66,7 +66,7 @@ app.get("/api/blogs/:id", function(req, res) {
 app.delete("/api/blogs/:id", function(req, res) {
   // console.log(req.params);
 
-  db.collection(COLLECTION_NAME).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
+  db.collection(COLLECTION_NAME).deleteOne({_id: req.params.id}, function(err, result) {
 
     if (err) {
       handleError(res, err.message, "Failed to delete contact");
@@ -79,13 +79,11 @@ app.delete("/api/blogs/:id", function(req, res) {
 app.post("/api/blogs", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
-  console.log(newblog);
   // if (!req.body.name) {
   //   handleError(res, "Invalid user input", "Must provide a name.", 400);
   // }
 
   db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
-    console.log(doc);
     if (err) {
       handleError(res, err.message, "Failed to create new contact.");
     } else {
