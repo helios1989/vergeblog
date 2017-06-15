@@ -64,8 +64,9 @@ app.get("/api/blogs/:id", function(req, res) {
 
 
 app.delete("/api/blogs/:id", function(req, res) {
+  console.log(res.params);
   db.collection(COLLECTION_NAME).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
-    console.log(res.params);
+
     if (err) {
       handleError(res, err.message, "Failed to delete contact");
     } else {
