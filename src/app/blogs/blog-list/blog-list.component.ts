@@ -41,11 +41,11 @@ export class BlogListComponent implements OnInit {
     return false;
   }
 
-  updateBlog(id: number) {
+  updateBlog(id: string) {
     alert(id);
   }
 
-  deleteBlog(id: number) {
+  deleteBlog(id: string) {
     alert(id);
   }
 }
