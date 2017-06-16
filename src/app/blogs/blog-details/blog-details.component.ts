@@ -30,13 +30,16 @@ export class BlogDetailsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
-         this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-            this.initForm(blogDetail);
+          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
+              this.initForm(blogDetail);
           });
        } else {
+        //  this.initForm(this.blogData);
+          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
+              this.initForm(blogDetail);
+          });
        }
     });
-    this.initForm(this.blogData);
 
   }
   initForm(blogData: Blog) {
