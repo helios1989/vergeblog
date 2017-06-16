@@ -38,6 +38,7 @@ export class BlogDetailsComponent implements OnInit {
             this.blogData.contact = blogDetail.contact;
             this.blogData.description = blogDetail.description;
             name = blogDetail.name;
+            console.log(name);
             // for ( var i in blogDetail) {
             //   this.blogData[i] = blogDetail[i];
             // }
