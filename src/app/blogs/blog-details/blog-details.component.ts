@@ -33,13 +33,13 @@ export class BlogDetailsComponent implements OnInit {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
             this.initForm(blogDetail);
           });
+       } else {
        }
-
     });
-
+    this.initForm(blogDetail);
 
   }
-  initForm(blogData: any) {
+  initForm(blogData: Blog) {
     // this.router.paramss
     console.log(blogData);
     this.blogForm = this.fb.group({
