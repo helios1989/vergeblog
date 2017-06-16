@@ -29,9 +29,9 @@ export class BlogListComponent implements OnInit {
         if (blogs) {
         this.blogs = blogs.map((blogs) => {
           if(!blogs.title) {
-            console.log('no contact')
+            // console.log('no contact')
           }
-            console.log(blogs);
+            // console.log(blogs);
             return blogs;
           });
         }
@@ -45,7 +45,6 @@ export class BlogListComponent implements OnInit {
   }
 
   updateBlog(id: string) {
-    alert(id);
     // const idx = this.getIndexOfBlog(blog._id);
     this.router.navigate(['blog', id]);
   }
