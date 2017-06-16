@@ -5,7 +5,7 @@ export class Blog {
     public title?: string,
     public contact?: {
       mobile?: string,
-      telephon?: string
+      telephone?: string
     }) {}
   // _id?: string;
   // name?: string;
