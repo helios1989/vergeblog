@@ -47,12 +47,12 @@ export class BlogDetailsComponent implements OnInit {
     // console.log(blogData);
     this.blogForm = this.fb.group({
       //first argument is the initial value and second the valdiation
-      'title': [blogData.title, Validators.required],
-      'description': [blogData.description, Validators.required], // multiple validator
-      'email': [blogData.email, [Validators.required, Validators.email]],
+      'title': [(blogData.title || null), Validators.required],
+      'description': [blogData.description || null, Validators.required], // multiple validator
+      'email': [blogData.email || null, [Validators.required, Validators.email]],
       'contact': this.fb.group({
-        'mobile': [blogData.contact.mobile, Validators.required],
-        'telephone': [blogData.contact.telephone, Validators.required]
+        'mobile': [blogData.contact.mobile || null, Validators.required],
+        'telephone': [blogData.contact.telephone || null, Validators.required]
       })
     });
   }
