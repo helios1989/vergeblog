@@ -26,7 +26,7 @@ export class BlogDetailsComponent implements OnInit {
 
   ngOnInit() {
     //automatically pull the params in ActivatedRoute
-    let name: string;
+    let title: string;
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
@@ -37,15 +37,15 @@ export class BlogDetailsComponent implements OnInit {
             this.blogData.email = blogDetail.email;
             this.blogData.contact = blogDetail.contact;
             this.blogData.description = blogDetail.description;
-            name = blogDetail.name;
-            console.log(name);
+            title = blogDetail.name;
+            console.log(title);
             console.log(blogDetail);
             // for ( var i in blogDetail) {
             //   this.blogData[i] = blogDetail[i];
             // }
           });
        }
-       console.log(name);
+       console.log(title);
        // In a real app: dispatch action to load the details here.
        console.log(this.blogData);
        this.initForm(this.blogData);
