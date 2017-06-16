@@ -15,7 +15,7 @@ export class BlogDetailsComponent implements OnInit {
   //Form Group Array
   blogForm: FormGroup;
   private sub: any;
-  id: number;
+  id: any;
   constructor(
     private router: Router,
     private blogService: BlogService,
@@ -38,7 +38,11 @@ export class BlogDetailsComponent implements OnInit {
     //automatically pull the params in ActivatedRoute
      this.sub = this.route.params.subscribe(params => {
        this.id = +params['id']; // (+) converts string 'id' to a number
-       console.log(this.id);
+       if(this.id !== 0) {
+         this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
+            console.log('successfully get' + blogDetail);
+         });
+       }
        // In a real app: dispatch action to load the details here.
     });
 
@@ -48,7 +52,6 @@ export class BlogDetailsComponent implements OnInit {
     this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
       console.log('successfully addded ' + newBlog);
     });
-
   }
 
 }
