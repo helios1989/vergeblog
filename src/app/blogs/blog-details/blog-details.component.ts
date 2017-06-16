@@ -40,7 +40,7 @@ export class BlogDetailsComponent implements OnInit {
        this.id = +params['id']; // (+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-            console.log('successfully get' + blogDetail);
+            // console.log('successfully get' + blogDetail);
          });
        }
        // In a real app: dispatch action to load the details here.
@@ -50,7 +50,7 @@ export class BlogDetailsComponent implements OnInit {
   save() {
     console.log(this.blogForm.value);
     this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
-      console.log('successfully addded ' + newBlog);
+      // console.log('successfully addded ' + newBlog);
     });
   }
 
