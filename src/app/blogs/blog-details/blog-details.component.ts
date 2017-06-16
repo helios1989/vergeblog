@@ -37,7 +37,7 @@ export class BlogDetailsComponent implements OnInit {
     });
     //automatically pull the params in ActivatedRoute
      this.sub = this.route.params.subscribe(params => {
-      //  this.id = +params['id']; //(+) converts string 'id' to a number
+       this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
             console.log(blogDetail);
