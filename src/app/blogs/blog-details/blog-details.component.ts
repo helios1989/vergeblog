@@ -36,7 +36,7 @@ export class BlogDetailsComponent implements OnInit {
        } else {
        }
     });
-    this.initForm(this.blogDetail);
+    this.initForm(this.blogData);
 
   }
   initForm(blogData: Blog) {
