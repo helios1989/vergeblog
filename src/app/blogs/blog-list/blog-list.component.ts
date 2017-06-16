@@ -46,9 +46,11 @@ export class BlogListComponent implements OnInit {
 
   updateBlog(id: string) {
     alert(id);
+    // const idx = this.getIndexOfBlog(blog._id);
+    this.router.navigate(['blog', id]);
   }
 
-  private getIndexOfContact = (blogId: String) => {
+  private getIndexOfBlog = (blogId: String) => {
     return this.blogs.findIndex((blogs) => {
       return blogs._id === blogId;
     });
@@ -57,7 +59,7 @@ export class BlogListComponent implements OnInit {
   deleteBlog(id: string) {
     // this.blogs;
     this.blogService.deleteBlog(id).then((deletedContactId: String) => {
-      var idx = this.getIndexOfContact(deletedContactId);
+      var idx = this.getIndexOfBlog(deletedContactId);
       if (idx !== -1) {
           this.blogs.splice(idx, 1);
           this.selectContact(null);
