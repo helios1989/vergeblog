@@ -32,15 +32,17 @@ export class BlogDetailsComponent implements OnInit {
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
             this.blogData = blogDetail;
+            console.log(this.blogData);
          });
        }
        // In a real app: dispatch action to load the details here.
+       console.log(this.blogData);
        this.initForm(this.blogData);
     });
 
 
   }
-  initForm(blogData: Blog) {
+  initForm(blogData: any) {
     // this.router.paramss
     console.log(blogData);
     this.blogForm = this.fb.group({
