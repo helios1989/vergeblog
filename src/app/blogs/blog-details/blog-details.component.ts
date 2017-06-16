@@ -34,10 +34,8 @@ export class BlogDetailsComponent implements OnInit {
               this.initForm(blogDetail);
           });
        } else {
-        //  this.initForm(this.blogData);
-          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-              this.initForm(blogDetail);
-          });
+         let blogDetail = Blog;
+        this.initForm(blogDetail);
        }
     });
 
