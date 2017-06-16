@@ -13,6 +13,8 @@ import { AppRoutingModule }     from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { LocalStorageModule } from 'angular-2-local-storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LocalStorageModule.withConfig({
+            prefix: 'my-app',
+            storageType: 'localStorage'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

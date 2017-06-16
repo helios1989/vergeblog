@@ -4,6 +4,7 @@ import { BlogService } from '../blog.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as moment from 'moment';
 // import { BlogDetailsComponent } from '../blogs/blog-details/blog-details.component';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'app-blog-list',
@@ -17,6 +18,7 @@ export class BlogListComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private router: Router,
+    private localStorageService: LocalStorageService
     ) { }
   // testDate: string
   ngOnInit() {

@@ -25,7 +25,7 @@ export class BlogService {
                 .catch(this.handleError);
   }
 
-  // delete("/api/contacts/:id")
+  // delete("/api/blogs/:id")
   deleteBlog(blogId: String): Promise<String> {
       return this.http.delete(this.blogsURI + '/' + blogId)
                  .toPromise()
@@ -33,14 +33,14 @@ export class BlogService {
                  .catch(this.handleError);
   }
 
-  // put("/api/contacts/:id")
-  // updateContact(putContact: Contact): Promise<Contact> {
-  //   var putUrl = this.contactsUrl + '/' + putContact._id;
-  //   return this.http.put(putUrl, putContact)
-  //               .toPromise()
-  //               .then(response => response.json() as Contact)
-  //               .catch(this.handleError);
-  // }
+  // put("/api/blogs/:id")
+  updateContact(putBlog: Blog): Promise<Blog> {
+    var putUrl = this.blogsURI + '/' + putBlog._id;
+    return this.http.put(putUrl, putBlog)
+                .toPromise()
+                .then(response => response.json() as Blog)
+                .catch(this.handleError);
+  }
 
   private handleError (error: any) {
     let errMsg = (error.message) ? error.message :
