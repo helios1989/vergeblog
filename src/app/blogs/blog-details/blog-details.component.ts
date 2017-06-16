@@ -16,7 +16,7 @@ export class BlogDetailsComponent implements OnInit {
   blogForm: FormGroup;
   private sub: any;
   id: any;
-  blogData:  Blog;
+  blogData: Blog;
   constructor(
     private router: Router,
     private blogService: BlogService,
@@ -26,34 +26,32 @@ export class BlogDetailsComponent implements OnInit {
 
   ngOnInit() {
     //automatically pull the params in ActivatedRoute
-    let blogForm = {};
+
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-            // blogForm.name = blogDetail.name;
-            // console.log(blogDetail);
-            // blogForm.name = name;
-            // blogData._id =
-            blogForm = blogDetail;
-            console.log('>>>>>>');
-            console.log(blogForm);
+            this.blogData = blogDetail;
          });
        }
        // In a real app: dispatch action to load the details here.
+       this.initForm(this.blogData);
     });
+
+
+  }
+  initForm(blogData: Blog) {
     // this.router.paramss
     this.blogForm = this.fb.group({
       //first argument is the initial value and second the valdiation
-      'title': new FormControl(null, Validators.required),
-      'description': new FormControl(null, Validators.required), // multiple validator
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'contact': new FormGroup({
-        'mobile': new FormControl(null, Validators.required),
-        'telephone': new FormControl(null, Validators.required)
+      'title': [blogData.title, Validators.required],
+      'description': [null, Validators.required], // multiple validator
+      'email': [null, [Validators.required, Validators.email]],
+      'contact': this.fb.group({
+        'mobile': [null, Validators.required],
+        'telephone': [null, Validators.required]
       })
     });
-
   }
   save() {
     console.log(this.blogForm.value);
