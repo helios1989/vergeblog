@@ -16,6 +16,7 @@ export class BlogDetailsComponent implements OnInit {
   blogForm: FormGroup;
   private sub: any;
   id: any;
+  blogData:  Blog;
   constructor(
     private router: Router,
     private blogService: BlogService,
@@ -24,6 +25,23 @@ export class BlogDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    //automatically pull the params in ActivatedRoute
+    let blogForm = {};
+    this.sub = this.route.params.subscribe(params => {
+       this.id = params['id']; //(+) converts string 'id' to a number
+       if(this.id !== 0) {
+         this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
+            // blogForm.name = blogDetail.name;
+            // console.log(blogDetail);
+            // blogForm.name = name;
+            // blogData._id =
+            blogForm = blogDetail;
+            console.log('>>>>>>');
+            console.log(blogForm);
+         });
+       }
+       // In a real app: dispatch action to load the details here.
+    });
     // this.router.paramss
     this.blogForm = this.fb.group({
       //first argument is the initial value and second the valdiation
@@ -34,16 +52,6 @@ export class BlogDetailsComponent implements OnInit {
         'mobile': new FormControl(null, Validators.required),
         'telephone': new FormControl(null, Validators.required)
       })
-    });
-    //automatically pull the params in ActivatedRoute
-     this.sub = this.route.params.subscribe(params => {
-       this.id = params['id']; //(+) converts string 'id' to a number
-       if(this.id !== 0) {
-         this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-            console.log(blogDetail);
-         });
-       }
-       // In a real app: dispatch action to load the details here.
     });
 
   }
