@@ -42,9 +42,10 @@ export class BlogDetailsComponent implements OnInit {
   }
   initForm(blogData: Blog) {
     // this.router.paramss
+    console.log(blogData);
     this.blogForm = this.fb.group({
       //first argument is the initial value and second the valdiation
-      'title': [blogData.title, Validators.required],
+      'title': [null, Validators.required],
       'description': [null, Validators.required], // multiple validator
       'email': [null, [Validators.required, Validators.email]],
       'contact': this.fb.group({
