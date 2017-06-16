@@ -26,13 +26,13 @@ export class BlogDetailsComponent implements OnInit {
 
   ngOnInit() {
     //automatically pull the params in ActivatedRoute
-
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-            this.blogData = blogDetail;
-            console.log(this.blogData);
+            // this.blogData = blogDetail;
+            // console.log(this.blogData);
+          this.blogData = blogDetail;
          });
        }
        // In a real app: dispatch action to load the details here.
