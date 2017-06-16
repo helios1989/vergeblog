@@ -31,24 +31,10 @@ export class BlogDetailsComponent implements OnInit {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-            this.blogData = blogDetail;
-            this.blogData._id = blogDetail._id;
-            this.blogData.name = blogDetail.name;
-            this.blogData.email = blogDetail.email;
-            this.blogData.contact = blogDetail.contact;
-            this.blogData.description = blogDetail.description;
-            title = blogDetail.name;
-            console.log(title);
-            console.log(blogDetail);
-            // for ( var i in blogDetail) {
-            //   this.blogData[i] = blogDetail[i];
-            // }
+            this.initForm(blogDetail);
           });
        }
-       console.log(title);
-       // In a real app: dispatch action to load the details here.
-       console.log(this.blogData);
-       this.initForm(this.blogData);
+
     });
 
 
