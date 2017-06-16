@@ -16,7 +16,7 @@ export class BlogDetailsComponent implements OnInit {
   blogForm: FormGroup;
   private sub: any;
   id: any;
-  blogData: Blog;
+  blogData:  Blog;
   constructor(
     private router: Router,
     private blogService: BlogService,
@@ -26,33 +26,33 @@ export class BlogDetailsComponent implements OnInit {
 
   ngOnInit() {
     //automatically pull the params in ActivatedRoute
-    let title: string;
+
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
-          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-              this.initForm(blogDetail);
-          });
-       } else {
-         let blogDetail = Blog;
-        this.initForm(blogDetail);
+         this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
+            // blogForm.name = blogDetail.name;
+            // console.log(blogDetail);
+            // blogForm.name = name;
+            // blogData._id =
+            // blogData = blogDetail;
+            // console.log(blogData);
+         });
        }
+       // In a real app: dispatch action to load the details here.
     });
-
-  }
-  initForm(blogData: Blog) {
     // this.router.paramss
-    // console.log(blogData);
     this.blogForm = this.fb.group({
       //first argument is the initial value and second the valdiation
-      'title': [(blogData.title || null), Validators.required],
-      'description': [blogData.description || null, Validators.required], // multiple validator
-      'email': [blogData.email || null, [Validators.required, Validators.email]],
-      'contact': this.fb.group({
-        'mobile': [blogData.contact.mobile || null, Validators.required],
-        'telephone': [blogData.contact.telephone || null, Validators.required]
+      'title': [null, Validators.required],
+      'description': [null, Validators.required], // multiple validator
+      'email': [null, [Validators.required, Validators.email]],
+      'contact':  this.fb.group({
+        'mobile': [null, Validators.required],
+        'telephone': [null, Validators.required]
       })
     });
+
   }
   save() {
     console.log(this.blogForm.value);
