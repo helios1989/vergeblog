@@ -73,6 +73,7 @@ export class BlogDetailsComponent implements OnInit {
         // this.router.navigate(['']);
       });
     } else {
+      console.dir(this.blogForm.value);
       this.blogService.updateContact(this.blogForm.value).then((newBlog: Blog) => {
         console.log('successfully updated ' + newBlog);
         // this.router.navigate(['']);
