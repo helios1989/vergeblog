@@ -70,7 +70,6 @@ app.delete("/api/blogs/:id", function(req, res) {
     }
   });
 });
-
 app.put("/api/blogs/:id", function(req, res) {
   var updateDoc = req.body;
   delete updateDoc._id;
