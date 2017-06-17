@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
-var ObjectID = mongodb.ObjectID;
+var objectID = mongodb.ObjectID;
 
 var COLLECTION_NAME = 'vergeblog';
 var port = process.env.PORT || 8080;
@@ -52,12 +52,13 @@ app.get('/api/blogs', function(req, res){
   })
 })
 
-app.get("/api/blogs/:id", function(req, res) {
-  db.collection(COLLECTION_NAME).findOne({_id: new ObjectID(req.params.id) }, function(err, doc) {
+app.delete("/api/blogs/:id", function(req, res) {
+  db.collection(COLLECTION_NAME).deleteOne({_id: req.params._id }, function(err, result) {
+    console.log(res.params);
     if (err) {
-      handleError(res, err.message, "Failed to get contact");
+      handleError(res, err.message, "Failed to delete contact");
     } else {
-      res.status(200).json(doc);
+      res.status(200).json(req.params.id);
     }
   });
 });
@@ -76,23 +77,16 @@ app.put("/api/blogs/:id", function(req, res) {
   });
 });
 
-app.delete("/api/blogs/:id", function(req, res) {
-  db.collection(COLLECTION_NAME).deleteOne({_id: new ObjectID(req.params.id)}, function(err, result) {
-    if (err) {
-      handleError(res, err.message, "Failed to delete contact");
-    } else {
-      res.status(200).json(req.params.id);
-    }
-  });
-});
-
-app.post("/api/blogs", function(req, res) {
+app.post("/api/blogaddnew", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
+  console.log(newblog);
   // if (!req.body.name) {
   //   handleError(res, "Invalid user input", "Must provide a name.", 400);
   // }
+
   db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
+    console.log(doc);
     if (err) {
       handleError(res, err.message, "Failed to create new contact.");
     } else {
