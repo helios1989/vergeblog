@@ -34,6 +34,7 @@ export class BlogDetailsComponent implements OnInit {
        if(this.id !== '0') {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
            this.AddMode = false;
+           console.log(blogDetail);
             this.blogForm = this.fb.group({
             //first argument is the initial value and second the valdiatio
             'title': ['testing', Validators.required],
