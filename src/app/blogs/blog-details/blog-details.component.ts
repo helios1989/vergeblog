@@ -34,12 +34,12 @@ export class BlogDetailsComponent implements OnInit {
            console.log(blogDetail.title);
             this.blogForm = this.fb.group({
             //first argument is the initial value and second the valdiatio
-            'title': ['testing', Validators.required],
-            'description': [blogDetail.description, Validators.required], // multiple validator
-            'email': [blogDetail.email, [Validators.required, Validators.email]],
+            'title': new FormControl(blogDetail.title, Validators.required),
+            'description': new FormControl(blogDetail.description, Validators.required),
+            'email': new FormControl(blogDetail.email, Validators.required),
             'contact':  this.fb.group({
-              'mobile': [blogDetail.contact.mobile, Validators.required],
-              'telephone': [blogDetail.contact.telephone, Validators.required]
+              'mobile': new FormControl(blogDetail.contact.mobile, Validators.required),
+              'telephone': new FormControl(blogDetail.contact.telephone, Validators.required),
             })
           });
          });
