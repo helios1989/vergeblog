@@ -41,7 +41,7 @@ export class BlogService {
 
   // put("/api/blogs/:id")
   updateContact(putBlog: Blog): Promise<Blog> {
-    var putUrl = this.blogsURI + '/' + putBlog._id;
+    var putUrl = this.blogsURI + '/' + putBlog;
     return this.http.put(putUrl, putBlog)
             .toPromise()
             .then(response => response.json() as Blog)
