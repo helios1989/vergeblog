@@ -73,15 +73,15 @@ app.delete("/api/blogs/:id", function(req, res) {
 app.put("/api/blogs/:id", function(req, res) {
   var updateDoc = req.body;
   delete updateDoc._id;
-
-  db.collection(COLLECTION_NAME).updateOne({_id: new objectID(req.params.id)}, updateDoc, function(err, doc) {
-    if (err) {
-      handleError(res, err.message, "Failed to update blogs");
-    } else {
-      updateDoc._id = req.params.id;
-      res.status(200).json(updateDoc);
-    }
-  });
+  // res.status(200).json(req);
+  // db.collection(COLLECTION_NAME).updateOne({_id: new objectID(req.params.id)}, updateDoc, function(err, doc) {
+  //   if (err) {
+  //     handleError(res, err.message, "Failed to update blogs");
+  //   } else {
+  //     updateDoc._id = req.params.id;
+  //     res.status(200).json(updateDoc);
+  //   }
+  // });
 });
 
 app.post("/api/blogs", function(req, res) {
