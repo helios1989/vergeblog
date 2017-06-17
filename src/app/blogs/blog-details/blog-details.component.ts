@@ -70,6 +70,7 @@ export class BlogDetailsComponent implements OnInit {
         console.log('successfully addded ' + newBlog);
       });
     } else {
+      console.log(this.id);
       this.blogService.updateContact(this.id).then((newBlog: Blog) => {
         console.log('successfully updated ' + newBlog);
       });
