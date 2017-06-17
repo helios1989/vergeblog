@@ -17,6 +17,8 @@ export class BlogDetailsComponent implements OnInit {
   private sub: any;
   id: any;
   blogData:  Blog;
+  AddMode: boolean;
+  
   constructor(
     private router: Router,
     private blogService: BlogService,
@@ -31,7 +33,7 @@ export class BlogDetailsComponent implements OnInit {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-           console.log(blogDetail.title);
+           this.AddMode = false;
             this.blogForm = this.fb.group({
             //first argument is the initial value and second the valdiatio
             'title': ['testing', Validators.required],
@@ -44,16 +46,7 @@ export class BlogDetailsComponent implements OnInit {
           });
          });
        } else {
-         this.blogForm = this.fb.group({
-            //first argument is the initial value and second the valdiation
-            'title': [null, Validators.required],
-            'description': [null, Validators.required], // multiple validator
-            'email': [null, [Validators.required, Validators.email]],
-            'contact':  this.fb.group({
-              'mobile': [null, Validators.required],
-              'telephone': [null, Validators.required]
-            })
-          });
+          this.AddMode = true;
        }
         this.blogForm = this.fb.group({
             //first argument is the initial value and second the valdiation
@@ -72,10 +65,15 @@ export class BlogDetailsComponent implements OnInit {
 
   }
   save() {
-    console.log(this.blogForm.value);
-    this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
-      // console.log('successfully addded ' + newBlog);
-    });
+    if (this.AddMode) {
+      this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
+        console.log('successfully addded ' + newBlog);
+      });
+    } else {
+      this.blogService.updateContact(this.id).then((newBlog: Blog) => {
+        console.log('successfully updated ' + newBlog);
+      });
+    }
   }
 
 }
