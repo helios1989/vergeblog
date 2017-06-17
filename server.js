@@ -77,7 +77,7 @@ app.put("/api/blogs/:id", function(req, res) {
   });
 });
 
-app.post("/api/blogaddnew", function(req, res) {
+app.post("/api/blogs", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
   console.log(newblog);
