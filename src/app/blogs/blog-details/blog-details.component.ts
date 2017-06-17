@@ -34,12 +34,12 @@ export class BlogDetailsComponent implements OnInit {
            console.log(blogDetail.title);
             this.blogForm = this.fb.group({
             //first argument is the initial value and second the valdiatio
-            'title': new FormControl(blogDetail.title, Validators.required),
-            'description': new FormControl(blogDetail.description, Validators.required),
-            'email': new FormControl(blogDetail.email, Validators.required),
+            'title': ['testing', Validators.required],
+            'description': [blogDetail.description, Validators.required], // multiple validator
+            'email': [blogDetail.email, [Validators.required, Validators.email]],
             'contact':  this.fb.group({
-              'mobile': new FormControl(blogDetail.contact.mobile, Validators.required),
-              'telephone': new FormControl(blogDetail.contact.telephone, Validators.required),
+              'mobile': [blogDetail.contact.mobile, Validators.required],
+              'telephone': [blogDetail.contact.telephone, Validators.required]
             })
           });
          });
@@ -55,6 +55,16 @@ export class BlogDetailsComponent implements OnInit {
             })
           });
        }
+        this.blogForm = this.fb.group({
+            //first argument is the initial value and second the valdiation
+            'title': [null, Validators.required],
+            'description': [null, Validators.required], // multiple validator
+            'email': [null, [Validators.required, Validators.email]],
+            'contact':  this.fb.group({
+              'mobile': [null, Validators.required],
+              'telephone': [null, Validators.required]
+            })
+          });
        // In a real app: dispatch action to load the details here.
     });
     // this.router.paramss
