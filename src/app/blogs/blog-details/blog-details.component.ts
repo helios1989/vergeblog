@@ -31,7 +31,7 @@ export class BlogDetailsComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id']; //(+) converts string 'id' to a number
-       if(this.id !== 0) {
+       if(this.id !== '0') {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
            this.AddMode = false;
             this.blogForm = this.fb.group({
@@ -68,11 +68,13 @@ export class BlogDetailsComponent implements OnInit {
     if (this.AddMode) {
       this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
         console.log('successfully addded ' + newBlog);
+        this.router.navigate(['']);
       });
     } else {
       console.log(this.id);
       this.blogService.updateContact(this.id).then((newBlog: Blog) => {
         console.log('successfully updated ' + newBlog);
+        this.router.navigate(['']);
       });
     }
   }
