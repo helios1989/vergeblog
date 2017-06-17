@@ -52,7 +52,6 @@ app.get('/api/blogs', function(req, res){
   })
 })
 app.get("/api/blogs/:id", function(req, res) {
-  res.status(200).json(req.params);
   db.collection(COLLECTION_NAME).findOne({ _id: req.params.id }, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to get blogs");
