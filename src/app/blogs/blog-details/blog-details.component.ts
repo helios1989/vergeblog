@@ -68,13 +68,12 @@ export class BlogDetailsComponent implements OnInit {
     if (this.AddMode) {
       this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
         console.log('successfully addded ' + newBlog);
-        this.router.navigate(['']);
+        // this.router.navigate(['']);
       });
     } else {
-      console.log(this.id);
       this.blogService.updateContact(this.id).then((newBlog: Blog) => {
         console.log('successfully updated ' + newBlog);
-        this.router.navigate(['']);
+        // this.router.navigate(['']);
       });
     }
   }
