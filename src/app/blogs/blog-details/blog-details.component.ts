@@ -31,27 +31,33 @@ export class BlogDetailsComponent implements OnInit {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
-            // blogForm.name = blogDetail.name;
-            // console.log(blogDetail);
-            // blogForm.name = name;
-            // blogData._id =
-            // blogData = blogDetail;
-            // console.log(blogData);
+            this.blogForm = this.fb.group({
+            //first argument is the initial value and second the valdiation
+            'title': [blogDetail.title, Validators.required],
+            'description': [blogDetail.description, Validators.required], // multiple validator
+            'email': [blogDetail.email, [Validators.required, Validators.email]],
+            'contact':  this.fb.group({
+              'mobile': [blogDetail.contact.mobile, Validators.required],
+              'telephone': [blogDetail.contact.telephone, Validators.required]
+            })
+          });
          });
+       } else {
+         this.blogForm = this.fb.group({
+            //first argument is the initial value and second the valdiation
+            'title': [null, Validators.required],
+            'description': [null, Validators.required], // multiple validator
+            'email': [null, [Validators.required, Validators.email]],
+            'contact':  this.fb.group({
+              'mobile': [null, Validators.required],
+              'telephone': [null, Validators.required]
+            })
+          });
        }
        // In a real app: dispatch action to load the details here.
     });
     // this.router.paramss
-    this.blogForm = this.fb.group({
-      //first argument is the initial value and second the valdiation
-      'title': [null, Validators.required],
-      'description': [null, Validators.required], // multiple validator
-      'email': [null, [Validators.required, Validators.email]],
-      'contact':  this.fb.group({
-        'mobile': [null, Validators.required],
-        'telephone': [null, Validators.required]
-      })
-    });
+    
 
   }
   save() {
