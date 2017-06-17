@@ -52,13 +52,14 @@ app.get('/api/blogs', function(req, res){
   })
 })
 app.get("/api/blogs/:id", function(req, res) {
-  db.collection(COLLECTION_NAME).findOne({ _id: new ObjectID(req.params._id) }, function(err, doc) {
-    if (err) {
-      handleError(res, err.message, "Failed to get blogs");
-    } else {
-      res.status(200).json(doc);
-    }
-  });
+  res.status(200).json(req.params);
+  // db.collection(COLLECTION_NAME).findOne({ _id: new ObjectID(req.params._id) }, function(err, doc) {
+  //   if (err) {
+  //     handleError(res, err.message, "Failed to get blogs");
+  //   } else {
+  //     res.status(200).json(doc);
+  //   }
+  // });
 });
 app.delete("/api/blogs/:id", function(req, res) {
   db.collection(COLLECTION_NAME).deleteOne({_id: req.params._id }, function(err, result) {
