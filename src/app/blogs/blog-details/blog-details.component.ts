@@ -31,9 +31,10 @@ export class BlogDetailsComponent implements OnInit {
        this.id = params['id']; //(+) converts string 'id' to a number
        if(this.id !== 0) {
          this.blogService.getBlogDetail(this.id).then((blogDetail: Blog) => {
+           console.log(blogDetail.title);
             this.blogForm = this.fb.group({
-            //first argument is the initial value and second the valdiation
-            'title': [blogDetail.title, Validators.required],
+            //first argument is the initial value and second the valdiatio
+            'title': ['testing', Validators.required],
             'description': [blogDetail.description, Validators.required], // multiple validator
             'email': [blogDetail.email, [Validators.required, Validators.email]],
             'contact':  this.fb.group({
