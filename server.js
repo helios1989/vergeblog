@@ -52,7 +52,7 @@ app.get('/api/blogs', function(req, res){
   })
 })
 app.get("/api/blogs/:id", function(req, res) {
-  db.collection(COLLECTION_NAME).findOne({ _id: req.params.id }, function(err, doc) {
+  db.collection(COLLECTION_NAME).findOne({ _id:new objectID(req.params.id) }, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to get blogs");
     } else {
@@ -74,7 +74,7 @@ app.put("/api/blogs/:id", function(req, res) {
   var updateDoc = req.body;
   delete updateDoc._id;
 
-  db.collection(COLLECTION_NAME).updateOne({_id: new ObjectID(req.params._id)}, updateDoc, function(err, doc) {
+  db.collection(COLLECTION_NAME).updateOne({_id: new objectID(req.params._id)}, updateDoc, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to update blogs");
     } else {
