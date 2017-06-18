@@ -37,6 +37,7 @@ export class BlogDetailsComponent implements OnInit {
            console.log(blogDetail);
             this.blogForm = this.fb.group({
             //first argument is the initial value and second the valdiatio
+            'id': [this.id],
             'title': ['testing', Validators.required],
             'description': [blogDetail.description, Validators.required], // multiple validator
             'email': [blogDetail.email, [Validators.required, Validators.email]],
