@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import 'rxjs/add/operator/toPromise';
 @Component({
   selector: 'app-phone-texter',
   templateUrl: './phone-texter.component.html',
@@ -9,17 +9,16 @@ export class PhoneTexterComponent implements OnInit {
   phone = '';
   // @Input()
   // sendSMS: Function;
-  @Input() 
+  @Input()
   sendTextHandler: Function;
 
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
-  sendText(phone: string) {
-    alert(phone);
-    this.sendText(phone);
+  sendText(phoneNumber) {
+    this.sendTextHandler(phoneNumber);
   }
 }

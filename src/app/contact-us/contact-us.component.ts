@@ -10,10 +10,10 @@ export class ContactUsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
-  sendText(phone: string) {
-    alert('testing');
-    alert(phone);
+  sendText(phoneNumber) {
+    console.log('i am not working' + phoneNumber);
   }
 }
