@@ -44,21 +44,7 @@ function handleError(res, reason, message, code) {
 //   POST: create a new contacts
 
 app.get('/api/blogs', function(req, res){
-  var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
 
-  // Pass in parameters to the REST API using an object literal notation. The
-  // REST client will handle authentication and response serialzation for you.
-  client.sms.messages.create({
-      to:'+63926804907',
-      from:'2015617486',
-      body:'ahoy hoy! Testing Twilio and node.js'
-  }, function(error, message) {
-      if (!error) {
-          console.log('Success! The SID for this SMS message is:');
-      } else {
-          console.log('Oops! There was an error.');
-      }
-  });
   db.collection(COLLECTION_NAME).find({}).toArray(function(err, docs){
     if (err) {
       handleError(res, err.message, "Failed to get blogs.");
@@ -102,13 +88,7 @@ app.put("/api/blogs/:id", function(req, res) {
 app.post("/api/blogs", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
-  // if (!req.body.name) {
-  //   handleError(res, "Invalid user input", "Must provide a name.", 400);
-  // }
 
-
-  // Create a new REST API client to make authenticated requests against the
-  // twilio back end
   db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
     console.log(doc);
     if (err) {
@@ -118,26 +98,20 @@ app.post("/api/blogs", function(req, res) {
     }
   });
 });
+app.get("/sendText", function(req, res){
+    var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
 
-// //twilio sending sms
-// app.post('/api/sendsms/', function(req, res){
-//   var accountSid = 'AC9b37a72f5e09062e3e6fd289a5c1e706',
-//     authToken =  'process.env.TWILIO_AUTH_TOKEN',
-//     sendingNumber = req.params.phone;
-//     message = 'hello world';
-//   var client = require('twilio')(accountSid, sendingNumber);
-//   // console.log(client.api.messages.create())
-//   return client.api.messages
-//     .create({
-//       body: message,
-//       to: '+63926804907',
-//       from: '+639173057898',
-//     }).then(function(data) {
-//       res.status(200).json('Administrator notified');
-//     }).catch(function(err) {
-//       res.status(200).json('Administrator notified' + err);
-//     });;
-// })
-
-
-
+  // Pass in parameters to the REST API using an object literal notation. The
+  // REST client will handle authentication and response serialzation for you.
+  client.sms.messages.create({
+      to:'+63926804907',
+      from:'+13342199006',
+      body:'ahoy hoy! Testing Twilio and node.js'
+  }, function(error, message) {
+      if (!error) {
+          console.log('Success! The SID for this SMS message is:');
+      } else {
+          console.log('Oops! There was an error.');
+      }
+  });
+});
