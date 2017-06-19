@@ -86,11 +86,40 @@ app.put("/api/blogs/:id", function(req, res) {
 app.post("/api/blogs", function(req, res) {
   var newblog = req.body;
   newblog.createDate = new Date();
-  console.log(newblog);
   // if (!req.body.name) {
   //   handleError(res, "Invalid user input", "Must provide a name.", 400);
   // }
+  // Load the twilio module
+  var twilio = require('twilio');
 
+  // Create a new REST API client to make authenticated requests against the
+  // twilio back end
+  var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
+
+  // Pass in parameters to the REST API using an object literal notation. The
+  // REST client will handle authentication and response serialzation for you.
+  client.sms.messages.create({
+      to:'+63926804907',
+      from:'2015617486',
+      body:'ahoy hoy! Testing Twilio and node.js'
+  }, function(error, message) {
+      // The HTTP request to Twilio will run asynchronously. This callback
+      // function will be called when a response is received from Twilio
+      // The "error" variable will contain error information, if any.
+      // If the request was successful, this value will be "falsy"
+      if (!error) {
+          // The second argument to the callback will contain the information
+          // sent back by Twilio for the request. In this case, it is the
+          // information about the text messsage you just sent:
+          console.log('Success! The SID for this SMS message is:');
+          console.log(message.sid);
+
+          console.log('Message sent on:');
+          console.log(message.dateCreated);
+      } else {
+          console.log('Oops! There was an error.');
+      }
+  });
   db.collection(COLLECTION_NAME).insertOne(newblog, function(err, doc) {
     console.log(doc);
     if (err) {
@@ -99,28 +128,27 @@ app.post("/api/blogs", function(req, res) {
       res.status(201).json(doc.ops[0]);
     }
   });
-
 });
 
-//twilio sending sms
-app.post('/api/sendsms/:phone', function(req, res){
-  var accountSid = 'AC9b37a72f5e09062e3e6fd289a5c1e706',
-    authToken =  'process.env.TWILIO_AUTH_TOKEN',
-    sendingNumber = req.params.phone;
-    message = 'hello world';
-  var client = require('twilio')(accountSid, sendingNumber);
-  // console.log(client.api.messages.create())
-  return client.api.messages
-    .create({
-      body: message,
-      to: '+63926804907',
-      from: '+639173057898',
-    }).then(function(data) {
-      res.status(200).json('Administrator notified');
-    }).catch(function(err) {
-      res.status(200).json('Administrator notified' + err);
-    });;
-})
+// //twilio sending sms
+// app.post('/api/sendsms/', function(req, res){
+//   var accountSid = 'AC9b37a72f5e09062e3e6fd289a5c1e706',
+//     authToken =  'process.env.TWILIO_AUTH_TOKEN',
+//     sendingNumber = req.params.phone;
+//     message = 'hello world';
+//   var client = require('twilio')(accountSid, sendingNumber);
+//   // console.log(client.api.messages.create())
+//   return client.api.messages
+//     .create({
+//       body: message,
+//       to: '+63926804907',
+//       from: '+639173057898',
+//     }).then(function(data) {
+//       res.status(200).json('Administrator notified');
+//     }).catch(function(err) {
+//       res.status(200).json('Administrator notified' + err);
+//     });;
+// })
 
 
 

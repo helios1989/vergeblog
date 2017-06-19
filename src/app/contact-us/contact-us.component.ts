@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhoneTexterService } from '../shared/phone-texter/phone-texter.service';
 
+
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
@@ -16,10 +17,8 @@ export class ContactUsComponent implements OnInit {
   }
 
   sendText(phoneNumber) {
-    console.log('i am not working' + phoneNumber);
-    this.phoneTexterService.sendText(phoneNumber).then((msg) => {
-        console.log('successfully sent ' + msg);
-        // this.router.navigate(['']);
-      });
+    console.log('i am not working ' + phoneNumber);
+    // phoneNumber = '+639173057898';
+    // this.phoneTexterService.sendMessage(phoneNumber);
   }
 }

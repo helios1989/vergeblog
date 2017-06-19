@@ -19,6 +19,7 @@ export class PhoneTexterComponent implements OnInit {
   }
 
   sendText(phoneNumber) {
+    console.log(phoneNumber);
     this.sendTextHandler(phoneNumber);
   }
 }
