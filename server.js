@@ -107,7 +107,7 @@ app.post('/api/sendsms/:phone', function(req, res){
   var accountSid = 'AC9b37a72f5e09062e3e6fd289a5c1e706',
     authToken =  'process.env.TWILIO_AUTH_TOKEN',
     sendingNumber = req.params.phone;
-
+    message = 'hello world';
   var client = require('twilio')(accountSid, sendingNumber);
   // console.log(client.api.messages.create())
   return client.api.messages
