@@ -14,6 +14,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { PhoneTexterComponent } from './shared/phone-texter/phone-texter.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LocalStorageModule } from 'angular-2-local-storage';
     HeaderComponent,
     AboutComponent,
     ContactUsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PhoneTexterComponent
   ],
   imports: [
     BrowserModule,

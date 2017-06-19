@@ -12,4 +12,8 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
   }
 
+  sendText(phone: string) {
+    alert('testing');
+    alert(phone);
+  }
 }

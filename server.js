@@ -99,4 +99,28 @@ app.post("/api/blogs", function(req, res) {
       res.status(201).json(doc.ops[0]);
     }
   });
+
 });
+
+//twilio sending sms
+app.post('/api/sendsms/:phone', function(req, res){
+  var accountSid = 'AC9b37a72f5e09062e3e6fd289a5c1e706',
+    authToken =  'process.env.TWILIO_AUTH_TOKEN',
+    sendingNumber = req.params.phone;
+
+  var client = require('twilio')(accountSid, sendingNumber);
+  // console.log(client.api.messages.create())
+  return client.api.messages
+    .create({
+      body: message,
+      to: '+63926804907',
+      from: '+639173057898',
+    }).then(function(data) {
+      res.status(200).json('Administrator notified');
+    }).catch(function(err) {
+      res.status(200).json('Administrator notified' + err);
+    });;
+})
+
+
+
