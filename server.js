@@ -110,7 +110,7 @@ app.get("/api/sendText/:message", function(req, res){
   }, function(error, message) {
       if (!error) {
           console.log('Success! The SID for this SMS message is:');
-          res.status(200).json(res.params.message)
+          res.status(200).json(res.params.message + 'tesss')
       } else {
           console.log('Oops! There was an error.');
       }
