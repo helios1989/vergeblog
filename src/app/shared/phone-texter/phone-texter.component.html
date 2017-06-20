@@ -1,4 +1,7 @@
-<div class="phone-text-wrapper">
-    <input [(ngModel)]="phoneNumber" type="text" class="phone-texter" id="phone-texter"/>
-    <button class="btn btn-success" (click)="sendText(phoneNumber)">Send</button>
+<div class="phone-text-wrapper row">
+    <label for="phoneNumber">Phone Number</label>
+    <input [(ngModel)]="phoneNumber" type="text" class="phoneNumber form-control" id="phoneNumber"/>
+     <label for="phoneNumber">Text Message</label>
+    <textarea name="" id="" class="form-control" cols="30" [(ngModel)]="textMessage" rows="10"></textarea>
+    <button class="btn btn-success" (click)="sendText(phoneNumber, textMessage)">Send</button>
 </div>

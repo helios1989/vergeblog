@@ -16,9 +16,8 @@ export class ContactUsComponent implements OnInit {
 
   }
 
-  sendText(phoneNumber) {
+  sendText(phoneNumber, textMessage) {
     console.log('i am not working ' + phoneNumber);
-    // phoneNumber = '+639173057898';
-    // this.phoneTexterService.sendMessage(phoneNumber);
+    console.log('text message ' + textMessage);
   }
 }

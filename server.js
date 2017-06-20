@@ -98,7 +98,7 @@ app.post("/api/blogs", function(req, res) {
     }
   });
 });
-app.get("/sendText", function(req, res){
+app.get("/api/sendText/:message", function(req, res){
     var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
 
   // Pass in parameters to the REST API using an object literal notation. The
@@ -110,6 +110,7 @@ app.get("/sendText", function(req, res){
   }, function(error, message) {
       if (!error) {
           console.log('Success! The SID for this SMS message is:');
+          res.status(200).json(res.params.message)
       } else {
           console.log('Oops! There was an error.');
       }
