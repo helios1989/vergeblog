@@ -20,6 +20,9 @@ import { ProjectsComponent } from './projects/projects.component';
 import { WeatherComponent } from './weather/weather.component';
 import { LoginComponent } from './login/login.component';
 
+//guarsd and auth.guards-service
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 @NgModule({
   declarations: [
     AppComponent,
