@@ -1,5 +1,6 @@
 import {
   CanActivate,
+  CanActivateChild,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Router
@@ -9,7 +10,7 @@ import  { Injectable } from '@angular/core';
 import { AuthService}  from './auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(
     private authService: AuthService,
     private router: Router){}
@@ -25,6 +26,11 @@ export class AuthGuard implements CanActivate {
               }
             }
           )
-      }
+  }
+  // will fix the return once the flow is already established
+  CanActivateChild(route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+     return  this.canActivate(route, state);
+  }
 }
 
