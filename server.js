@@ -104,17 +104,17 @@ app.get("/api/sendText/:message", function(req, res){
 
     var twilio = require('twilio');
     var client = new twilio(accountSid, authToken);
-      res.status(200).json('req.params.message');
-    // client.sendMessage({
-    //     body: 'Hello from Node',
-    //     to: '+63926804907',  // Text this number
-    //     from: '+13342199006' // From a valid Twilio number
-    // }, function(err, data){
-    //   if(err) {
-    //     console.log(err);
-    //   } else {
-    //     res.status(200).json('req.params.message');
-    //   }
+
+    client.sendMessage({
+        body: 'Hello from Node',
+        to: '+63926804907',  // Text this number
+        from: '+13342199006' // From a valid Twilio number
+    }, function(err, data){
+      if(err) {
+        res.status(200).json(data);
+      } else {
+        res.status(200).json('req.params.message');
+      }
 
     // });
 
