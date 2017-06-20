@@ -7,8 +7,6 @@ var COLLECTION_NAME = 'vergeblog';
 var port = process.env.PORT || 8080;
 var app = express();
 
-var twilio = require('twilio');
-var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
 app.use(bodyParser.json());
 //create link to angular build directory
 var distDir = __dirname + "/dist";
@@ -100,20 +98,19 @@ app.post("/api/blogs", function(req, res) {
   });
 });
 app.get("/api/sendText/:message", function(req, res){
-  //
+    //
+    var accountSid = 'AC9b37a72f5e09062e3e6fd289a5c1e706'; // Your Account SID from www.twilio.com/console
+    var authToken = 'b3062f19ca21ef2b8ddf9885fbc93a0b';   // Your Auth Token from www.twilio.com/console
 
+    var twilio = require('twilio');
+    var client = new twilio(accountSid, authToken);
 
-  client.sms.messages.create({
-      to:'+63926804907',
-      from:'+13342199006',
-      body:'ahoy hoy! Testing Twilio and node.js'
-  }, function(error, message) {
-      if (!error) {
-          console.log('Success! The SID for this SMS message is:');
-          res.status(200).json(req.params.message + 'tesss');
-      } else {
-          console.log('Oops! There was an error.');
-      }
-  });
-
+    client.messages.create({
+        body: 'Hello from Node',
+        to: '+63926804907',  // Text this number
+        from: '+13342199006' // From a valid Twilio number
+    })
+    .then((message) =>
+      res.status(200).json(req.params.message)
+    );
 });
