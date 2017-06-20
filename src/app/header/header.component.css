@@ -2,6 +2,21 @@
   width: 100%;
   text-align: center;
 }
+#navbar-primary .navbar-nav .projects {
+  width: 200px;
+  height: 100px;
+}
+#navbar-primary .navbar-nav .sub-menu-1 {
+  display: none;
+}
+
+#navbar-primary .navbar-nav .projects:hover > .sub-menu-1 {
+  display: block;
+  list-style: none;
+  position:absolute;
+  top: 60px;
+  text-align: left;
+}
 #navbar-primary .navbar-nav > li {
   display: inline-block;
   float: none;
