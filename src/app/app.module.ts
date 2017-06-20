@@ -46,7 +46,7 @@ import { LoginComponent } from './login/login.component';
             storageType: 'localStorage'
     })
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
