@@ -32,23 +32,6 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database){
   })
 });
 
-var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
-
-  // Pass in parameters to the REST API using an object literal notation. The
-  // REST client will handle authentication and response serialzation for you.
-  client.sms.messages.create({
-      to:'+63926804907',
-      from:'+13342199006',
-      body:'ahoy hoy! Testing Twilio and node.js'
-  }, function(error, message) {
-      if (!error) {
-          console.log('Success! The SID for this SMS message is:');
-          res.status(200).json(req.params.message)
-      } else {
-          console.log('Oops! There was an error.');
-      }
-  });
-
 // Contact API ROUTES
 //generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
@@ -116,20 +99,20 @@ app.post("/api/blogs", function(req, res) {
   });
 });
 app.get("/api/sendText/:message", function(req, res){
-  var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
-
+    // var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
+    res.status(200).json(req.params.message);
   // Pass in parameters to the REST API using an object literal notation. The
   // REST client will handle authentication and response serialzation for you.
-  client.sms.messages.create({
-      to:'+63926804907',
-      from:'+13342199006',
-      body:'ahoy hoy! Testing Twilio and node.js'
-  }, function(error, message) {
-      if (!error) {
-          console.log('Success! The SID for this SMS message is:');
-          res.status(200).json(req.params.message)
-      } else {
-          console.log('Oops! There was an error.');
-      }
-  });
+  // client.sms.messages.create({
+  //     to:'+63926804907',
+  //     from:'+13342199006',
+  //     body:'ahoy hoy! Testing Twilio and node.js'
+  // }, function(error, message) {
+  //     if (!error) {
+  //         console.log('Success! The SID for this SMS message is:');
+  //         res.status(200).json(req.params.message)
+  //     } else {
+  //         console.log('Oops! There was an error.');
+  //     }
+  // });
 });
