@@ -11,9 +11,13 @@ import { AuthService}  from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    return  this.canActivate(childRoute, state);
+  }
   constructor(
     private authService: AuthService,
-    private router: Router){}
+    private router: Router
+  ){}
   canActivate(route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         return this.authService.isAuthenticated().
@@ -26,11 +30,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
               }
             }
           )
-  }
-  // will fix the return once the flow is already established
-  CanActivateChild(route: ActivatedRouteSnapshot,
-      state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-     return  this.canActivate(route, state);
   }
 }
 

@@ -21,8 +21,8 @@ import { WeatherComponent } from './weather/weather.component';
 import { LoginComponent } from './login/login.component';
 
 //guarsd and auth.guards-service
-import { AuthGuard } from './auth-guard.service';
-import { AuthService } from './auth.service';
+// import { AuthGuard } from './auth-guard.service';
+// import { AuthService } from './auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +49,7 @@ import { AuthService } from './auth.service';
             storageType: 'localStorage'
     })
   ],
-  providers: [AuthGuard, AuthService],
+  // providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
