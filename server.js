@@ -99,8 +99,7 @@ app.post("/api/blogs", function(req, res) {
   });
 });
 app.get("/api/sendText/:message", function(req, res){
-    var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
-
+    // var client = new twilio.RestClient('AC9b37a72f5e09062e3e6fd289a5c1e706', 'b3062f19ca21ef2b8ddf9885fbc93a0b');
   // Pass in parameters to the REST API using an object literal notation. The
   // REST client will handle authentication and response serialzation for you.
   client.sms.messages.create({
@@ -115,4 +114,5 @@ app.get("/api/sendText/:message", function(req, res){
           console.log('Oops! There was an error.');
       }
   });
+
 });
