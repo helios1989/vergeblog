@@ -116,6 +116,6 @@ app.get("/api/sendText/:message", function(req, res){
         res.status(200).json('req.params.message');
       }
 
-    // });
+   });
 
 });
