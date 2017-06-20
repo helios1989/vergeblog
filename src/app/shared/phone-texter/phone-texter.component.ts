@@ -10,18 +10,19 @@ export class PhoneTexterComponent implements OnInit {
   phone = '';
   // @Input()
   // sendSMS: Function;
-  @Input() 
+  @Input()
   sendTextHandler: Function;
 
   constructor( private phoneTexterService: PhoneTexterService) { }
 
   ngOnInit() {
-    
+
   }
 
   sendText(phone: string, textMessage: string) {
     this.phoneTexterService.sendMessage(textMessage).then((res: String) => {
+       console.log(res);
         this.sendTextHandler(res);
-    });    
+    });
   }
 }

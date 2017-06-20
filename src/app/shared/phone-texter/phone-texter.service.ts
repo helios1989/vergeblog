@@ -8,13 +8,13 @@ import { Subject } from 'rxjs/Subject';
 export class PhoneTexterService {
   phoneURI = '/api/sendText/';
   constructor(private http: Http) {
-
   }
   @Input()
   sendTextHandler: Function
 
     // delete("/api/blogs/:id")
   sendMessage(message: String): Promise<String> {
+     console.log(message);
       return this.http.get(this.phoneURI + message)
             .toPromise()
             .then(response => response.json() as String)
