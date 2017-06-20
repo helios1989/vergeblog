@@ -12,9 +12,13 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AppRoutingModule }     from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProjectModule} from './projects/project.module';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { PhoneTexterComponent } from './shared/phone-texter/phone-texter.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { WeatherComponent } from './weather/weather.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { PhoneTexterComponent } from './shared/phone-texter/phone-texter.compone
     AboutComponent,
     ContactUsComponent,
     NotFoundComponent,
-    PhoneTexterComponent
+    PhoneTexterComponent,
+    ProjectsComponent,
+    WeatherComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +40,7 @@ import { PhoneTexterComponent } from './shared/phone-texter/phone-texter.compone
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    ProjectModule,
     LocalStorageModule.withConfig({
             prefix: 'my-app',
             storageType: 'localStorage'
