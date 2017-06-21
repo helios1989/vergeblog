@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ContactResolver } from './contact-us/contact-resolver.service';
 //guarsd and auth.guards-service
 // import { AuthGuard } from './auth-guard.service';
 
@@ -53,6 +54,6 @@ import { ErrorPageComponent } from './error-page/error-page.component';
   ],
   // providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent],
-  providers: [AuthGuard, AuthService]
+  providers: [AuthGuard, AuthService, ContactResolver]
 })
 export class AppModule { }
