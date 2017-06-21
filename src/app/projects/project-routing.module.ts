@@ -10,7 +10,7 @@ const projroutes: Routes = [
    { path: '', component: WeatherProjectComponent },
   { path: 'weather',
     component: WeatherProjectComponent,
-    canActivateChild: [AuthGuard],
+    // canActivateChild: [AuthGuard],// guard only for those child
     children:
     [
       { path: 'edit/:id', component:  WeatherDetailComponent },
@@ -18,7 +18,10 @@ const projroutes: Routes = [
     ]
   },
   {
-    path: 'projects', component: ProjectsComponent, children: [
+    path: 'projects',
+    component: ProjectsComponent,
+    canActivateChild: [AuthGuard],
+    children: [
       { path: 'edit/:id', component:  ProjectDetailComponent },
       { path: 'add', component: ProjectDetailComponent }
     ]

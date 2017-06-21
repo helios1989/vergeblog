@@ -5,10 +5,12 @@ import { WeatherProjectComponent } from './weather-project/weather-project.compo
 import { WeatherDetailComponent } from './weather-project/weather-detail/weather-detail.component';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { AuthGuard } from '../auth-guard.service';
+import { AuthService }  from '../auth.service';
 
 @NgModule({
   declarations: [WeatherProjectComponent, WeatherDetailComponent, ProjectDetailComponent],
   imports: [ CommonModule, ProjectRoutingModule ],
-  providers: [],
+  providers: [AuthGuard, AuthService],
 })
 export class ProjectModule {}

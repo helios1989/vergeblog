@@ -16,7 +16,7 @@ export class AuthService {
     this.loggedIn = true;
   }
 
-  logOut() {
+  logout() {
     this.loggedIn = false;
   }
 }
