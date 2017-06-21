@@ -17,7 +17,6 @@ import { ProjectModule} from './projects/project.module';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { PhoneTexterComponent } from './shared/phone-texter/phone-texter.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { WeatherComponent } from './weather/weather.component';
 import { LoginComponent } from './login/login.component';
 
 //guarsd and auth.guards-service
@@ -34,8 +33,7 @@ import { LoginComponent } from './login/login.component';
     NotFoundComponent,
     PhoneTexterComponent,
     ProjectsComponent,
-    WeatherComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

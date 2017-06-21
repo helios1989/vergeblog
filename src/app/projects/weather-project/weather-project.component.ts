@@ -12,4 +12,6 @@ export class WeatherProjectComponent implements OnInit {
   ngOnInit() {
   }
 
+  
+
 }

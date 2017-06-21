@@ -7,7 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BlogListComponent } from './blogs/blog-list/blog-list.component';
 
 const routes: Routes = [
-  { path: '', component: BlogListComponent, pathMatch: 'full'  },
+  { path: '', component: BlogListComponent},
   { path: 'home', component: BlogListComponent },
   { path: 'about', component:  AboutComponent },
   { path: 'contact-us', component: ContactUsComponent },
