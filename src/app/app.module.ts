@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 //guarsd and auth.guards-service
 // import { AuthGuard } from './auth-guard.service';
 
@@ -36,6 +37,7 @@ import { AuthGuard } from './auth-guard.service';
     PhoneTexterComponent,
     ProjectsComponent,
     LoginComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

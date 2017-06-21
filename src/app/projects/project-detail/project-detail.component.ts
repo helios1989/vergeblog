@@ -17,24 +17,24 @@ export class ProjectDetailComponent implements OnInit, CanComponentDeactivate {
   ) { }
 
   ngOnInit() {
-    this.route.queryParams
+    this.route.params
       .subscribe(
-        (queryParams: Params) => {
-          this.allowedit = queryParams['edit'] === '1' ? true : false;
+        (paramId: Params) => {
+          // console.log(paramId);
+          this.allowedit = paramId['id'] === '1' ? true : false;
         }
       )
   }
 
   save() {
     this.changesSaved = true;
-    this.router.navigate(['../'], { relativeTo: this.route})
+    this.router.navigate([''], { relativeTo: this.route})
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.allowedit) {
       return true;
     } else {
-
       return confirm("Do you want to discard your changes");
     }
     // if (this.servername !== this.erv)
