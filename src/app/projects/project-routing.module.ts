@@ -4,14 +4,18 @@ import { WeatherProjectComponent } from './weather-project/weather-project.compo
 import { WeatherDetailComponent } from './weather-project/weather-detail/weather-detail.component';
 import { ProjectsComponent} from './projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { AuthGuard } from '../auth-guard.service';
 
 const projroutes: Routes = [
-   { path: '', component: WeatherProjectComponent }, 
-  { path: 'weather', component: WeatherProjectComponent, children: 
+   { path: '', component: WeatherProjectComponent },
+  { path: 'weather',
+    component: WeatherProjectComponent,
+    canActivateChild: [AuthGuard],
+    children:
     [
       { path: 'edit/:id', component:  WeatherDetailComponent },
       { path: 'add', component: WeatherDetailComponent }
-    ] 
+    ]
   },
   {
     path: 'projects', component: ProjectsComponent, children: [

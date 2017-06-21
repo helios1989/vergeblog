@@ -19,9 +19,11 @@ import { PhoneTexterComponent } from './shared/phone-texter/phone-texter.compone
 import { ProjectsComponent } from './projects/projects.component';
 import { LoginComponent } from './login/login.component';
 
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 //guarsd and auth.guards-service
 // import { AuthGuard } from './auth-guard.service';
-// import { AuthService } from './auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import { LoginComponent } from './login/login.component';
     })
   ],
   // providers: [AuthGuard, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthGuard, AuthService]
 })
 export class AppModule { }

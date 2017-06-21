@@ -6,6 +6,8 @@ var objectID = mongodb.ObjectID;
 var COLLECTION_NAME = 'vergeblog';
 var port = process.env.PORT || 8080;
 var app = express();
+var Logger = require('bunyan');
+var log = new Logger({name: 'hello' /*, ... */});
 
 app.use(bodyParser.json());
 //create link to angular build directory
@@ -43,7 +45,7 @@ function handleError(res, reason, message, code) {
 //   POST: create a new contacts
 
 app.get('/api/blogs', function(req, res){
-
+  log.info("hi %s", "verge");
   db.collection(COLLECTION_NAME).find({}).toArray(function(err, docs){
     if (err) {
       handleError(res, err.message, "Failed to get blogs.");
