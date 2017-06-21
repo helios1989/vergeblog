@@ -7,10 +7,11 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { AuthGuard } from '../auth-guard.service';
 import { AuthService }  from '../auth.service';
+import { CanDeactivateGuard } from './project-detail/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [WeatherProjectComponent, WeatherDetailComponent, ProjectDetailComponent],
   imports: [ CommonModule, ProjectRoutingModule ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, CanDeactivateGuard],
 })
 export class ProjectModule {}

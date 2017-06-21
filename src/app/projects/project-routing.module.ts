@@ -5,7 +5,7 @@ import { WeatherDetailComponent } from './weather-project/weather-detail/weather
 import { ProjectsComponent} from './projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { AuthGuard } from '../auth-guard.service';
-
+import { CanDeactivateGuard } from './project-detail/can-deactivate-guard.service';
 const projroutes: Routes = [
    { path: '', component: WeatherProjectComponent },
   { path: 'weather',
@@ -13,7 +13,7 @@ const projroutes: Routes = [
     // canActivateChild: [AuthGuard],// guard only for those child
     children:
     [
-      { path: 'edit/:id', component:  WeatherDetailComponent },
+      { path: 'edit/:id', component:  WeatherDetailComponent, canDeactivate: [CanDeactivateGuard] },
       { path: 'add', component: WeatherDetailComponent }
     ]
   },
