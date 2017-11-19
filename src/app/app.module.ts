@@ -13,6 +13,7 @@ import { AppRoutingModule }     from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectModule} from './projects/project.module';
+// import { ProjectRoutingModule } from './projects/project-routing.module';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { PhoneTexterComponent } from './shared/phone-texter/phone-texter.component';
@@ -24,7 +25,6 @@ import { AuthGuard } from './auth-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ContactResolver } from './contact-us/contact-resolver.service';
 //guarsd and auth.guards-service
-// import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -44,9 +44,9 @@ import { ContactResolver } from './contact-us/contact-resolver.service';
     BrowserModule,
     HttpModule,
     FormsModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     ProjectModule,
+    AppRoutingModule,
     LocalStorageModule.withConfig({
             prefix: 'my-app',
             storageType: 'localStorage'

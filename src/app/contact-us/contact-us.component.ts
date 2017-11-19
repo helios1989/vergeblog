@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PhoneTexterService } from '../shared/phone-texter/phone-texter.service';
-
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -10,10 +10,13 @@ import { PhoneTexterService } from '../shared/phone-texter/phone-texter.service'
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor(private phoneTexterService: PhoneTexterService) { }
+  constructor(
+    private phoneTexterService: PhoneTexterService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
-
+    // this.authService.login();
   }
 
   sendText(phoneNumber, textMessage) {
