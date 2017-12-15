@@ -74,10 +74,22 @@ export class BlogDetailsComponent implements OnInit {
     if (this.AddMode) {
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      let params = '';
+      let params = {
+        title: 'foo',
+        body: 'bar',
+        userId: 1
+      };
 
       this.http.post("https://stormy-reef-57721.herokuapp.com/app/login", params, options)
-        .map(res => console.log(res));
+        .subscribe(
+          res => {
+            console.log('this is the res');
+            console.log(res);
+          },
+          err => {
+            console.log("Error occured");
+          }
+        );
       
 
       // this.https://stormy-reef-57721.herokuapp.com/app/login
