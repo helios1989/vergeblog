@@ -72,7 +72,10 @@ export class BlogDetailsComponent implements OnInit {
   }
   save() {
     if (this.AddMode) {
-      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let headers = new Headers({ 
+        'Content-Type': 'application/json',
+      'Access-Control-Allow-Credentials': 'true'
+    });
       let options = new RequestOptions({ headers: headers });
       let params = {
         title: 'foo',
