@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Http, Response, RequestOptions, Headers} from '@angular/http';
 import { BlogService } from '../blog.service';
 import { Blog } from '../blog';
+import * as rxjs from 'rxjs';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-blog-details',
@@ -23,7 +26,8 @@ export class BlogDetailsComponent implements OnInit {
     private router: Router,
     private blogService: BlogService,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: Http
   ) { }
 
   ngOnInit() {
@@ -68,6 +72,15 @@ export class BlogDetailsComponent implements OnInit {
   }
   save() {
     if (this.AddMode) {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      let params = '';
+
+      this.http.post("https://stormy-reef-57721.herokuapp.com/app/login", params, options)
+        .map(res => console.log(res));
+      
+
+      // this.https://stormy-reef-57721.herokuapp.com/app/login
       this.blogService.createBlog(this.blogForm.value).then((newBlog: Blog) => {
         console.log('successfully addded ' + newBlog);
         // this.router.navigate(['']);
