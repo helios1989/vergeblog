@@ -38,7 +38,7 @@
     "moment": "^2.18.1",
     "mongodb": "^2.2.28",
     "rxjs": "^5.1.0",
-    "twilio": "^3.4.0",
+    "twilio": "^4.6.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -59,6 +59,6 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3",
-    "twilio": "^3.4.0"
+    "twilio": "^4.6.0"
   }
 }
